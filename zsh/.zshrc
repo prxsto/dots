@@ -63,11 +63,11 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 # zstyle ':completion:*' menu no
 
 # Aliases
-alias ls='ls --color'
-alias vim='nvim'
+# alias ls='ls --color'
+alias v='nvim'
 alias c='clear'
 alias tree='tree -C'
-# alias ls='eza --icons=always --color=always --no-filesize --no-time --no-user --no-permissions'
+alias ls='eza --icons=always --color=always --no-filesize --no-time --no-user --no-permissions'
 
 # Shell integrations
 eval "$(zoxide init --cmd cd zsh)"
