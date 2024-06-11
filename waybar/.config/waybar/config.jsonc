@@ -15,14 +15,13 @@
     "hyprland/workspaces"
   ],
   "modules-right": [
-    "mpd",
     "pulseaudio",
-    "network",
-    "bluetooth"
+    "bluetooth",
+    "network"
   ],
   "custom/launcher": {
     "interval": "once",
-    "format": "󰣇",
+    "format": " 󰣇  ",
     "on-click": "pkill wofi || wofi --show drun --term=kitty --width=20% --height=50% --columns 1 -I -s ~/.config/wofi/themes/everforest-light.css -o $MAIN_DISPLAY",
     "tooltip": false,
   },
@@ -35,8 +34,18 @@
     "on-click": "termite -e 'sudo pacman -Syu'; pkill -SIGRTMIN+8 waybar", // update system
     "signal": 8,
   },
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "active": "",
+      "default": "",
+    },
+    "persistent-workspaces": {
+      "*": 5, // 5 workspaces by default on every monitor
+    },
+  },
   "bluetooth": {
-    "format": " {status}",
+    "format": " ",
     "format-disabled": "",
     "format-off": "",
     "interval": 30,
@@ -47,21 +56,11 @@
     "timezone": "America/Los_Angeles",
     "format": "{:%H:%M}%  ",
   },
-  "cpu": {
-    "format": "{usage}% ",
-    "tooltip": false,
-  },
-  "memory": {
-    "format": "{}% ",
-  },
   "network": {
     // "interface": "wlp2*", // (Optional) To force the use of this interface
-    "format-wifi": "{essid} ({signalStrength}%) ",
-    "format-ethernet": "{ipaddr}/{cidr} ",
-    "tooltip-format": "{ifname} via {gwaddr} ",
-    "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "Disconnected ⚠",
-    "format-alt": "{ifname}: {ipaddr}/{cidr}",
+    // "format-wifi": "{essid} ({signalStrength}%) ",
+    "format-wifi": " ",
+    // "format-ethernet": "{ipaddr}/{cidr} ",
   },
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float
@@ -85,17 +84,5 @@
       ],
     },
     "on-click": "pavucontrol",
-  },
-  "custom/media": {
-    "format": "{icon} {}",
-    "return-type": "json",
-    "max-length": 40,
-    "format-icons": {
-      "spotify": "",
-      "default": "🎜",
-    },
-    "escape": true,
-    "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null", // Script in resources folder
-    // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
   },
 }
