@@ -4,20 +4,24 @@
   "layer": "top",
   "position": "top",
   "output": "DP-2",
-  "spacing": 4,
+  "margin-left": 10,
+  "margin-right": 10,
+  "margin-top": 5,
+  "spacing": 2,
   // Choose the order of the modules
   "modules-left": [
     "custom/launcher",
-    "clock",
-    "custom/pacman"
+    "hyprland/workspaces"
   ],
   "modules-center": [
-    "hyprland/workspaces"
+    "tray"
   ],
   "modules-right": [
     "pulseaudio",
     "bluetooth",
-    "network"
+    "network",
+    "clock",
+    "custom/power",
   ],
   "custom/launcher": {
     "interval": "once",
@@ -26,14 +30,6 @@
     "tooltip": false,
   },
   // Modules configuration
-  "custom/pacman": {
-    "format": "{}  ",
-    "interval": 3600, // every hour
-    "exec": "checkupdates | wc -l", // # of updates
-    "exec-if": "exit 0", // always run; consider advanced run conditions
-    "on-click": "termite -e 'sudo pacman -Syu'; pkill -SIGRTMIN+8 waybar", // update system
-    "signal": 8,
-  },
   "hyprland/workspaces": {
     "format": "{icon}",
     "format-icons": {
@@ -41,11 +37,16 @@
       "default": "",
     },
     "persistent-workspaces": {
-      "*": 5, // 5 workspaces by default on every monitor
+      "*": 6,
     },
   },
+  "tray": {
+    "show-passive-items": true,
+    "icon-size": 21,
+    "spacing": 2,
+  },
   "bluetooth": {
-    "format": " ",
+    "format": "",
     "format-disabled": "",
     "format-off": "",
     "interval": 30,
@@ -54,29 +55,21 @@
   },
   "clock": {
     "timezone": "America/Los_Angeles",
-    "format": "{:%H:%M}%  ",
+    "format": "  {:%H:%M}",
   },
   "network": {
-    // "interface": "wlp2*", // (Optional) To force the use of this interface
-    // "format-wifi": "{essid} ({signalStrength}%) ",
-    "format-wifi": " ",
-    // "format-ethernet": "{ipaddr}/{cidr} ",
+    "tooltip": false,
+    "format-wifi": "  {essid}",
+    "format-ethernet": "",
   },
   "pulseaudio": {
-    // "scroll-step": 1, // %, can be a float
-    "format": "{volume}% {icon} {format_source}",
-    "format-bluetooth": "{volume}% {icon} {format_source}",
-    "format-bluetooth-muted": " {icon} {format_source}",
-    "format-muted": " {format_source}",
-    "format-source": "{volume}% ",
+    // "tooltip": false,
+    "format": "{icon}  {volume}% {format_source}",
+    "format-muted": "       {format_source}",
+    "format-source": "",
     "format-source-muted": "",
     "format-icons": {
       "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
       "default": [
         "",
         "",
@@ -84,5 +77,27 @@
       ],
     },
     "on-click": "pavucontrol",
+  },
+  // "pulseaudio": {
+  //   // "scroll-step": 1, // %, can be a float
+  //   "format": "{volume}% {icon} {format_source}",
+  //   "format-bluetooth": "{volume}% {icon} {format_source}",
+  //   "format-bluetooth-muted": " {icon} {format_source}",
+  //   "format-muted": " {format_source}",
+  //   "format-source": "{volume}% ",
+  //   "format-source-muted": "",
+  //   "format-icons": {
+  //     "headphone": "",
+  //     "default": [
+  //       "",
+  //       "",
+  //       ""
+  //     ],
+  //   },
+  //   "on-click": "pavucontrol",
+  // },
+  "custom/power": {
+    "format": " ",
+    "on-click": "wlogout",
   },
 }
