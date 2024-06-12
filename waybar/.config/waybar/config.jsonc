@@ -8,28 +8,24 @@
   "margin-right": 10,
   "margin-top": 5,
   "spacing": 2,
-  // Choose the order of the modules
-  "modules-left": [
-    "custom/launcher",
-    "hyprland/workspaces"
-  ],
-  "modules-center": [
-    "tray"
-  ],
-  "modules-right": [
-    "pulseaudio",
-    "bluetooth",
-    "network",
-    "clock",
-    "custom/power",
-  ],
+  "modules-left": ["custom/launcher", "hyprland/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": ["group/audio", "group/connectivity", "custom/power"],
+  "group/connectivity": {
+    "orientation": "horizontal",
+    "modules": ["bluetooth", "network"],
+  },
+  "group/audio": {
+    "orientation": "horizontal",
+    "modules": ["cava", "pulseaudio"],
+  },
   "custom/launcher": {
     "interval": "once",
     "format": " 󰣇  ",
-    "on-click": "pkill wofi || wofi --show drun --term=kitty --width=20% --height=50% --columns 1 -I -s ~/.config/wofi/themes/everforest-light.css -o $MAIN_DISPLAY",
+    "on-click": "pkill rofi || rofi -show drun",
+    // "on-click": "pkill rofi || rofi --show drun --term=kitty --width=20% --height=50% --columns 1 -I -s ~/.config/wofi/themes/everforest-light.css -o $MAIN_DISPLAY",
     "tooltip": false,
   },
-  // Modules configuration
   "hyprland/workspaces": {
     "format": "{icon}",
     "format-icons": {
@@ -40,22 +36,41 @@
       "*": 6,
     },
   },
-  "tray": {
-    "show-passive-items": true,
-    "icon-size": 21,
-    "spacing": 2,
-  },
+  // "bluetooth": {
+  //   "format": "",
+  //   "format-disabled": "",
+  //   "format-off": "",
+  //   "interval": 30,
+  //   "on-click": "blueman-manager",
+  //   "format-no-controller": "",
+  // },
   "bluetooth": {
-    "format": "",
-    "format-disabled": "",
-    "format-off": "",
-    "interval": 30,
+    "format": "<span color='#b4befe'></span>",
+    "format-disabled": "", // an empty format will hide the module
+    "format-connected": "<span color='#b4befe'></span> {num_connections}",
+    "tooltip-format": "{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}   {device_address}",
     "on-click": "blueman-manager",
-    "format-no-controller": "",
   },
   "clock": {
     "timezone": "America/Los_Angeles",
     "format": "  {:%H:%M}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>",
+      },
+    },
+    "actions": {
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down",
+    },
   },
   "network": {
     "tooltip": false,
@@ -63,41 +78,49 @@
     "format-ethernet": "",
   },
   "pulseaudio": {
-    // "tooltip": false,
-    "format": "{icon}  {volume}% {format_source}",
-    "format-muted": "       {format_source}",
-    "format-source": "",
-    "format-source-muted": "",
+    "format": "<span color='#b4befe'>{icon}</span>  {volume}%",
+    "format-muted": "",
+    "tooltip": false,
     "format-icons": {
       "headphone": "",
-      "default": [
-        "",
-        "",
-        ""
-      ],
+      "default": ["", "", "󰕾", "󰕾", "󰕾", "", "", ""],
     },
+    "scroll-step": 1,
     "on-click": "pavucontrol",
   },
-  // "pulseaudio": {
-  //   // "scroll-step": 1, // %, can be a float
-  //   "format": "{volume}% {icon} {format_source}",
-  //   "format-bluetooth": "{volume}% {icon} {format_source}",
-  //   "format-bluetooth-muted": " {icon} {format_source}",
-  //   "format-muted": " {format_source}",
-  //   "format-source": "{volume}% ",
-  //   "format-source-muted": "",
-  //   "format-icons": {
-  //     "headphone": "",
-  //     "default": [
-  //       "",
-  //       "",
-  //       ""
-  //     ],
-  //   },
-  //   "on-click": "pavucontrol",
+  // "custom/ddcutil": {
+  //   "format": "{icon} {percentage}%",
+  //   "interval": 1,
+  //   "format-icons": ["󰃝", "󰃟", "󰃠"],
+  //   // "exec": "~/.config/waybar/scripts/waybar-ddcutil.sh",
+  //   "return-type": "json",
   // },
+  "cava": {
+    "cava_config": "$HOME/.config/cava/config",
+    // "framerate": 30,
+    // "autosens": 1,
+    // "sensitivity": 100,
+    // "bars": 14,
+    // "lower_cutoff_freq": 50,
+    // "higher_cutoff_freq": 10000,
+    // "method": "pulse",
+    // "source": "auto",
+    // "stereo": true,
+    // "reverse": false,
+    // "bar_delimiter": 0,
+    // "monstercat": false,
+    // "waves": false,
+    // "noise_reduction": 0.77,
+    // "input_delay": 2,
+    // "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+    "actions": {
+      "on-click-right": "mode",
+    },
+  },
   "custom/power": {
     "format": " ",
     "on-click": "wlogout",
+    "tooltip": false,
+    // "on-click": "sh $HOME/.config/rofi/bin/powermenu"
   },
 }
