@@ -4,26 +4,37 @@
   "layer": "top",
   "position": "top",
   "output": "DP-2",
-  "margin-left": 10,
-  "margin-right": 10,
-  "margin-top": 5,
   "spacing": 2,
-  "modules-left": ["custom/launcher", "hyprland/workspaces"],
-  "modules-center": ["clock"],
-  "modules-right": ["group/audio", "group/connectivity", "custom/power"],
+  "modules-left": [
+    "custom/launcher",
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "group/audio",
+    "group/connectivity",
+    "custom/power"
+  ],
   "group/connectivity": {
     "orientation": "horizontal",
-    "modules": ["bluetooth", "network"],
+    "modules": [
+      "bluetooth",
+      "network"
+    ],
   },
   "group/audio": {
     "orientation": "horizontal",
-    "modules": ["cava", "pulseaudio"],
+    "modules": [
+      "cava",
+      "pulseaudio"
+    ],
   },
   "custom/launcher": {
     "interval": "once",
     "format": " 󰣇  ",
-    "on-click": "pkill rofi || rofi -show drun",
-    // "on-click": "pkill rofi || rofi --show drun --term=kitty --width=20% --height=50% --columns 1 -I -s ~/.config/wofi/themes/everforest-light.css -o $MAIN_DISPLAY",
+    "on-click": "pkill rofi || sh $HOME/.config/rofi/bin/launcher",
     "tooltip": false,
   },
   "hyprland/workspaces": {
@@ -36,20 +47,12 @@
       "*": 6,
     },
   },
-  // "bluetooth": {
-  //   "format": "",
-  //   "format-disabled": "",
-  //   "format-off": "",
-  //   "interval": 30,
-  //   "on-click": "blueman-manager",
-  //   "format-no-controller": "",
-  // },
   "bluetooth": {
-    "format": "<span color='#b4befe'></span>",
+    "format": "<span color='#b4befe'> </span>",
     "format-disabled": "", // an empty format will hide the module
     "format-connected": "<span color='#b4befe'></span> {num_connections}",
     "tooltip-format": "{device_enumerate}",
-    "tooltip-format-enumerate-connected": "{device_alias}   {device_address}",
+    "tooltip-format-enumerate-connected": "{device_alias}",
     "on-click": "blueman-manager",
   },
   "clock": {
@@ -73,54 +76,57 @@
     },
   },
   "network": {
-    "tooltip": false,
     "format-wifi": "  {essid}",
     "format-ethernet": "",
+    "tooltip-format": "  {signalStrength}%  {bandwidthUpBits}  {bandwidthDownBits}",
+    "tooltip": true,
   },
   "pulseaudio": {
     "format": "<span color='#b4befe'>{icon}</span>  {volume}%",
     "format-muted": "",
-    "tooltip": false,
+    "tooltip": true,
+    "tooltip-format": "{desc}",
     "format-icons": {
       "headphone": "",
-      "default": ["", "", "󰕾", "󰕾", "󰕾", "", "", ""],
+      "default": [
+        "",
+        "",
+        "󰕾",
+        "󰕾",
+        "󰕾",
+        "",
+        "",
+        ""
+      ],
     },
     "scroll-step": 1,
     "on-click": "pavucontrol",
   },
-  // "custom/ddcutil": {
-  //   "format": "{icon} {percentage}%",
-  //   "interval": 1,
-  //   "format-icons": ["󰃝", "󰃟", "󰃠"],
-  //   // "exec": "~/.config/waybar/scripts/waybar-ddcutil.sh",
-  //   "return-type": "json",
+  // "cava": {
+  //   // "cava_config": "$HOME/.config/cava/config",
+  //   "framerate": 30,
+  //   "autosens": 1,
+  //   "sensitivity": 100,
+  //   "bars": 14,
+  //   "lower_cutoff_freq": 50,
+  //   "higher_cutoff_freq": 10000,
+  //   "method": "pulse",
+  //   "source": "auto",
+  //   "stereo": true,
+  //   "reverse": false,
+  //   "bar_delimiter": 0,
+  //   "monstercat": false,
+  //   "waves": false,
+  //   "noise_reduction": 0.77,
+  //   "input_delay": 2,
+  //   "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+  //   "actions": {
+  //     "on-click-right": "mode",
+  //   },
   // },
-  "cava": {
-    "cava_config": "$HOME/.config/cava/config",
-    // "framerate": 30,
-    // "autosens": 1,
-    // "sensitivity": 100,
-    // "bars": 14,
-    // "lower_cutoff_freq": 50,
-    // "higher_cutoff_freq": 10000,
-    // "method": "pulse",
-    // "source": "auto",
-    // "stereo": true,
-    // "reverse": false,
-    // "bar_delimiter": 0,
-    // "monstercat": false,
-    // "waves": false,
-    // "noise_reduction": 0.77,
-    // "input_delay": 2,
-    // "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
-    "actions": {
-      "on-click-right": "mode",
-    },
-  },
   "custom/power": {
     "format": " ",
-    "on-click": "wlogout",
+    "on-click": "pkill rofi || sh $HOME/.config/rofi/bin/powermenu",
     "tooltip": false,
-    // "on-click": "sh $HOME/.config/rofi/bin/powermenu"
   },
 }

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Variables
-DIR='/home/prxsto/wallpapers/'
+DIR='/home/prxsto/Pictures/wallpapers/'
 BG=$(find "$DIR" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.gif" \) | shuf -n 1)
 
 # Set the wallpaper
