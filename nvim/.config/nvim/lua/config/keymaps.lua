@@ -49,6 +49,9 @@ map("n", "<leader>ll", "<cmd>Lazy<cr>", { desc = "lazy" })
 map("n", "<leader>bg", "<cmd>BufferLinePick<CR>", { desc = "go to buffer" })
 map("n", "<leader>bq", "<cmd>bd<cr>", { desc = "quit current buffer" })
 
+-- oil
+map("n", "-", "<CMD>Oil<CR>", { desc = "open parent directory" })
+
 -- precognition
 map("n", "<leader>pt", function()
 	require("precognition").toggle()

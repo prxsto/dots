@@ -1,5 +1,26 @@
 return {
 	{
+		"chrishrb/gx.nvim",
+		keys = { { "gx", "<cmd>Browse<cr>", mode = { "n", "x" } } },
+		cmd = { "Browse" },
+		init = function()
+			vim.g.netrw_nogx = 1 -- disable netrw gx
+		end,
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = true, -- default settings
+		submodules = false,
+	},
+	{
+		"stevearc/oil.nvim",
+		opts = {},
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("oil").setup({
+				default_file_explorer = true,
+			})
+		end,
+	},
+	{
 		"rmagatti/auto-session",
 		config = function()
 			local auto_session = require("auto-session")
