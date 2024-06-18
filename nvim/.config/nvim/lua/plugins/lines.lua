@@ -56,35 +56,42 @@ return {
 			}
 		end,
 	},
+	-- {
+	-- 	"akinsho/bufferline.nvim",
+	-- 	lazy = false,
+	-- 	keys = {
+	-- 		{ "<leader>bp", "<cmd>BufferLineTogglePin<CR>", desc = "toggle pin" },
+	-- 		{ "<leader>bP", "<cmd>BufferLineGroupClose ungrouped<CR>", desc = "delete non-pinned buffers" },
+	-- 	},
+	-- 	opts = {
+	-- 		options = {
+	-- 			-- mode = "tabs",
+	-- 			-- indicator = { style = "underline" },
+	-- 			-- color_icons = true,
+	-- 			buffer_close_icon = "󰅖",
+	-- 			separator_style = "slant",
+	-- 			numbers = "none",
+	-- 			-- themable = true,
+	-- 			-- always_show_bufferline = true,
+	-- 			diagnostics = "nvim-lsp",
+	-- 			offsets = {
+	-- 				{
+	-- 					filetype = "neo-tree",
+	-- 					text = " FILE EXPLORER",
+	-- 					highlight = "Directory",
+	-- 					text_align = "left",
+	-- 					separator = false,
+	-- 				},
+	-- 			},
+	-- 		},
+	-- 	},
+	-- },
 	{
-		"akinsho/bufferline.nvim",
-		lazy = false,
-		keys = {
-			{ "<leader>bp", "<cmd>BufferLineTogglePin<CR>", desc = "toggle pin" },
-			{ "<leader>bP", "<cmd>BufferLineGroupClose ungrouped<CR>", desc = "delete non-pinned buffers" },
-		},
-		opts = {
-			options = {
-				-- mode = "tabs",
-				-- indicator = { style = "underline" },
-				-- color_icons = true,
-				buffer_close_icon = "󰅖",
-				separator_style = "slant",
-				numbers = "none",
-				-- themable = true,
-				-- always_show_bufferline = true,
-				diagnostics = "nvim-lsp",
-				offsets = {
-					{
-						filetype = "neo-tree",
-						text = " FILE EXPLORER",
-						highlight = "Directory",
-						text_align = "left",
-						separator = false,
-					},
-				},
-			},
-		},
+		"b0o/incline.nvim",
+		config = function()
+			require("incline").setup()
+		end,
+		event = "VeryLazy",
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
