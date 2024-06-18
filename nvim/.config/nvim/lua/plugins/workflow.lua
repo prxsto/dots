@@ -57,10 +57,7 @@ return {
 			require("better_escape").setup()
 		end,
 	},
-	{
-		"tiagovla/scope.nvim",
-	},
-	{
-		"airblade/vim-rooter",
-	},
+	-- {
+	-- 	"tiagovla/scope.nvim",
+	-- },
 }

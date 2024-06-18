@@ -65,7 +65,7 @@ return {
 		},
 		opts = {
 			options = {
-				mode = "tabs",
+				-- mode = "tabs",
 				-- indicator = { style = "underline" },
 				-- color_icons = true,
 				buffer_close_icon = "󰅖",
