@@ -6,9 +6,6 @@ opt.laststatus = 3 -- fix for lualine
 opt.number = true
 opt.relativenumber = true
 
--- line spacing
-opt.linespace = 10
-
 -- width of a tab
 opt.shiftwidth = 2
 opt.tabstop = 2
@@ -19,25 +16,25 @@ opt.expandtab = true
 
 opt.wrap = false -- disable line wrap
 
-opt.fillchars = { eob = " " } -- hide fillchars
+-- opt.fillchars = { eob = " " } -- hide fillchars
 
 -- search settings
-opt.ignorecase = true -- ignore case when searching
-opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
+opt.ignorecase = true
+opt.smartcase = true
 
 opt.cursorline = true
 opt.cursorlineopt = "number"
 
 opt.termguicolors = true
 
-opt.background = "dark" -- colorschemes that can be light or dark will be made dark
-opt.signcolumn = "yes" -- show sign column so that text doesn't shift
+opt.background = "dark"
+opt.signcolumn = "yes"
 
 -- backspace
-opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line, or insert mode start position
+opt.backspace = "indent,eol,start"
 
 -- clipboard
-opt.clipboard:append("unnamedplus") -- use system clipboard as default register
+opt.clipboard:append("unnamedplus")
 
 -- split windows
 opt.splitright = true -- split vertical window to the right

@@ -7,6 +7,8 @@ return {
 			custom_highlights = function(colors)
 				return {
 					VertSplit = { fg = colors.surface0 },
+					WinSeparator = { fg = colors.surface0 },
+					FloatBorder = { fg = colors.surface2 },
 				}
 			end,
 		},
@@ -50,7 +52,6 @@ return {
 	{
 		"stevearc/aerial.nvim",
 		opts = {},
-		-- Optional dependencies
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-tree/nvim-web-devicons",
@@ -77,10 +78,7 @@ return {
 				end,
 			})
 
-			-- set keymaps
-			local keymap = vim.keymap -- for conciseness
-
-			keymap.set("n", "<leader>aa", "<cmd>AerialToggle!<CR>", { desc = "toggle outline" })
+			vim.keymap.set("n", "<leader>aa", "<cmd>AerialToggle!<CR>", { desc = "toggle outline" })
 		end,
 	},
 	{

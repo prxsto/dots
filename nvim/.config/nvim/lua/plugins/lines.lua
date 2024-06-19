@@ -5,8 +5,6 @@ return {
 		opts = function()
 			return {
 				options = {
-					-- component_separators = { left = " ", right = " " },
-					-- section_separators = { left = " ", right = " " },
 					theme = "catppuccin",
 					globalstatus = true,
 					disabled_filetypes = { statusline = { "dashboard", "alpha", "neotree" }, winbar = {} },
@@ -56,43 +54,118 @@ return {
 			}
 		end,
 	},
+	{
+		"akinsho/bufferline.nvim",
+		lazy = false,
+		keys = {
+			{ "<leader>bp", "<cmd>BufferLineTogglePin<CR>", desc = "toggle pin" },
+			{ "<leader>bP", "<cmd>BufferLineGroupClose ungrouped<CR>", desc = "delete non-pinned buffers" },
+		},
+		opts = {
+			options = {
+				-- mode = "tabs",
+				buffer_close_icon = "󰅖",
+				separator_style = "slant",
+				numbers = "none",
+				always_show_bufferline = true,
+				diagnostics = "nvim-lsp",
+				offsets = {
+					{
+						filetype = "neo-tree",
+						text = " FILE EXPLORER",
+						highlight = "Directory",
+						text_align = "left",
+						separator = false,
+					},
+				},
+			},
+		},
+	},
 	-- {
-	-- 	"akinsho/bufferline.nvim",
-	-- 	lazy = false,
-	-- 	keys = {
-	-- 		{ "<leader>bp", "<cmd>BufferLineTogglePin<CR>", desc = "toggle pin" },
-	-- 		{ "<leader>bP", "<cmd>BufferLineGroupClose ungrouped<CR>", desc = "delete non-pinned buffers" },
-	-- 	},
-	-- 	opts = {
-	-- 		options = {
-	-- 			-- mode = "tabs",
-	-- 			-- indicator = { style = "underline" },
-	-- 			-- color_icons = true,
-	-- 			buffer_close_icon = "󰅖",
-	-- 			separator_style = "slant",
-	-- 			numbers = "none",
-	-- 			-- themable = true,
-	-- 			-- always_show_bufferline = true,
-	-- 			diagnostics = "nvim-lsp",
-	-- 			offsets = {
-	-- 				{
-	-- 					filetype = "neo-tree",
-	-- 					text = " FILE EXPLORER",
-	-- 					highlight = "Directory",
-	-- 					text_align = "left",
-	-- 					separator = false,
+	-- 	"b0o/incline.nvim",
+	-- 	-- event = "VeryLazy",
+	-- 	config = function()
+	-- 		require("incline").setup({
+	-- 			debounce_threshold = {
+	-- 				falling = 50,
+	-- 				rising = 10,
+	-- 			},
+	-- 			hide = {
+	-- 				cursorline = false,
+	-- 				focused_win = false,
+	-- 				only_win = false, -- Hide incline if only one window in tab
+	-- 			},
+	-- 			highlight = {
+	-- 				groups = {
+	-- 					InclineNormal = {
+	-- 						default = true,
+	-- 						group = "NormalFloat",
+	-- 					},
+	-- 					InclineNormalNC = {
+	-- 						default = true,
+	-- 						group = "NormalFloat",
+	-- 					},
 	-- 				},
 	-- 			},
-	-- 		},
-	-- 	},
+	-- 			ignore = {
+	-- 				buftypes = "special",
+	-- 				filetypes = {},
+	-- 				floating_wins = true,
+	-- 				unlisted_buffers = true,
+	-- 				wintypes = "special",
+	-- 			},
+	-- 			render = function(props)
+	-- 				local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
+	-- 				local devicons = require("nvim-web-devicons")
+	-- 				local helpers = require("incline.helpers")
+	-- 				local colors = require("catppuccin.palettes").get_palette("mocha")
+	-- 				if filename == "" then
+	-- 					filename = "[No Name]"
+	-- 				end
+	-- 				local ft_icon, ft_color = devicons.get_icon_color(filename)
+	-- 				local modified = vim.bo[props.buf].modified
+	-- 				return {
+	-- 					ft_icon and { " ", ft_icon, " ", guibg = ft_color, guifg = helpers.contrast_color(ft_color) }
+	-- 						or "",
+	-- 					" ",
+	-- 					{ filename, gui = modified and "bold,italic" or "bold" },
+	-- 					" ",
+	-- 					guibg = colors.surface0,
+	-- 				}
+	-- 			end,
+	-- 			window = {
+	-- 				margin = {
+	-- 					horizontal = 1,
+	-- 					vertical = 1,
+	-- 				},
+	-- 				options = {
+	-- 					signcolumn = "no",
+	-- 					wrap = false,
+	-- 				},
+	-- 				padding = 0,
+	-- 				padding_char = " ",
+	-- 				placement = {
+	-- 					horizontal = "right",
+	-- 					vertical = "top",
+	-- 				},
+	-- 				width = "fit",
+	-- 				winhighlight = {
+	-- 					active = {
+	-- 						EndOfBuffer = "None",
+	-- 						Normal = "InclineNormal",
+	-- 						Search = "None",
+	-- 					},
+	-- 					inactive = {
+	-- 						EndOfBuffer = "None",
+	-- 						Normal = "InclineNormalNC",
+	-- 						Search = "None",
+	-- 					},
+	-- 				},
+	-- 				zindex = 50,
+	-- 			},
+	-- 		})
+	-- 	end,
 	-- },
-	{
-		"b0o/incline.nvim",
-		config = function()
-			require("incline").setup()
-		end,
-		event = "VeryLazy",
-	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		config = function()
