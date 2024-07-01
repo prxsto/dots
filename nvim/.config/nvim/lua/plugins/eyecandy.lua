@@ -39,7 +39,10 @@ return {
 		"stevearc/dressing.nvim",
 		event = "VeryLazy",
 		opts = {
-			input = { default_prompt = "➤ " },
+			input = {
+				default_prompt = "➤ ",
+				border = "rounded",
+			},
 			select = { backend = { "telescope", "builtin" } },
 		},
 	},
@@ -49,12 +52,13 @@ return {
 			vim.keymap.set({ "v", "n" }, "<Leader>ca", require("actions-preview").code_actions)
 		end,
 	},
-	{
-		"rcarriga/nvim-notify",
-		config = function()
-			vim.notify = require("notify")
-		end,
-	},
+	-- {
+	-- 	"rcarriga/nvim-notify",
+	-- 	render = "compact",
+	-- 	config = function()
+	-- 		vim.notify = require("notify")
+	-- 	end,
+	-- },
 	{
 		"declancm/cinnamon.nvim",
 		config = true,

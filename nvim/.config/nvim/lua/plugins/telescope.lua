@@ -15,9 +15,11 @@ return {
 			telescope.setup({
 				defaults = {
 					path_display = { "smart" },
-               file_ignore_patterns = {
-                  "node_modules"
-               },
+					file_ignore_patterns = {
+						"node_modules",
+						".git",
+						".next",
+					},
 					mappings = {
 						i = {
 							["<C-k>"] = actions.move_selection_previous, -- move to prev result
@@ -56,6 +58,14 @@ return {
 				},
 			})
 			require("telescope").load_extension("ui-select")
+		end,
+	},
+	{
+		"piersolenski/telescope-import.nvim",
+		dependencies = "nvim-telescope/telescope.nvim",
+		config = function()
+			require("telescope").load_extension("import")
+			vim.keymap.set("n", "<leader>fi", ":Telescope import<cr>", { desc = "find imports" })
 		end,
 	},
 }
