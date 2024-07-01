@@ -20,9 +20,12 @@ return {
 			})
 		end,
 	},
-	-- {
-	-- 	"HiPhish/rainbow-delimiters.nvim",
-	-- },
+	{
+		"linrongbin16/lsp-progress.nvim",
+		config = function()
+			require("lsp-progress").setup()
+		end,
+	},
 	{
 		"norcalli/nvim-colorizer.lua",
 		config = function()
