@@ -13,6 +13,22 @@ return {
 	config = function()
 		require("neo-tree").setup({
 			close_if_last_window = true,
+			default_component_configs = {
+				diagnostics = {
+					symbols = {
+						hint = "󰝶",
+						info = "",
+						warn = "",
+						error = "",
+					},
+					highlights = {
+						hint = "DiagnosticSignHint",
+						info = "DiagnosticSignInfo",
+						warn = "DiagnosticSignWarn",
+						error = "DiagnosticSignError",
+					},
+				},
+			},
 			filesystem = {
 				filtered_items = {
 					visible = false,
