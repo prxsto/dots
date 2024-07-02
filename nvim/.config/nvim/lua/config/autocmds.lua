@@ -48,3 +48,10 @@ vim.api.nvim_create_autocmd("BufEnter", {
 		-- vim.opt_local.colorcolumn = {70, 80}
 	end,
 })
+
+--open neo-tree by default (after dashboard)
+vim.api.nvim_create_autocmd("BufReadPost", {
+	callback = function()
+		vim.cmd("Neotree show")
+	end,
+})

@@ -23,6 +23,7 @@ return {
 			auto_install = true,
 			-- ensure these language parsers are installed
 			ensure_installed = {
+				"comment",
 				"c",
 				"json",
 				"javascript",

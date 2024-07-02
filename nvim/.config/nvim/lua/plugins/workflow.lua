@@ -57,7 +57,4 @@ return {
 			require("better_escape").setup()
 		end,
 	},
-	-- {
-	-- 	"tiagovla/scope.nvim",
-	-- },
 }
