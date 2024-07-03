@@ -1,3 +1,8 @@
+-- filetype detection for hypr ecosystem config files
+vim.filetype.add({
+	pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
+})
+
 return {
 	"nvim-treesitter/nvim-treesitter",
 	event = { "BufReadPre", "BufNewFile" },
@@ -23,6 +28,7 @@ return {
 			auto_install = true,
 			-- ensure these language parsers are installed
 			ensure_installed = {
+				"hyprlang",
 				"comment",
 				"c",
 				"json",

@@ -40,6 +40,7 @@ local languages = {
 	"eslint",
 	"html",
 	"emmet_language_server",
+	-- "hyprls",
 }
 
 return {
@@ -120,12 +121,19 @@ return {
 	},
 	{
 		"williamboman/mason.nvim",
-		opts = {},
+		lazy = false,
+		config = function()
+			require("mason").setup()
+			vim.keymap.set("n", "<leader>mm", "<cmd>Mason<CR>", { desc = "mason" })
+		end,
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
-		opts = {
-			ensure_installed = languages,
-		},
+		auto_install = true,
+		config = function()
+			require("mason-lspconfig").setup({
+				ensure_installed = languages,
+			})
+		end,
 	},
 }
