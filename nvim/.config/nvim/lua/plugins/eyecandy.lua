@@ -61,6 +61,20 @@ return {
 	-- },
 	{
 		"declancm/cinnamon.nvim",
-		config = true,
+		config = function()
+			vim.keymap.set("n", "gd", function()
+				require("cinnamon").scroll(vim.lsp.buf.definition)
+			end)
+			vim.keymap.set("n", "gD", function()
+				require("cinnamon").scroll(vim.lsp.buf.declaration)
+			end)
+			require("cinnamon").setup({
+				keymaps = {
+					basic = true,
+					extra = true,
+				},
+				options = { mode = "window" },
+			})
+		end,
 	},
 }

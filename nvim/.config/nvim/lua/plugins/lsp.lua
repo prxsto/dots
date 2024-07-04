@@ -19,6 +19,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		local opts = { buffer = ev.buf }
 		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 		--FIX: vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
 		vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
 		vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
@@ -40,6 +41,7 @@ local languages = {
 	"eslint",
 	"html",
 	"emmet_language_server",
+	-- "hyprls",
 }
 
 return {
@@ -120,12 +122,19 @@ return {
 	},
 	{
 		"williamboman/mason.nvim",
-		opts = {},
+		lazy = false,
+		config = function()
+			require("mason").setup()
+			vim.keymap.set("n", "<leader>mm", "<cmd>Mason<CR>", { desc = "mason" })
+		end,
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
-		opts = {
-			ensure_installed = languages,
-		},
+		auto_install = true,
+		config = function()
+			require("mason-lspconfig").setup({
+				ensure_installed = languages,
+			})
+		end,
 	},
 }
