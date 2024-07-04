@@ -6,13 +6,31 @@ return {
 			return {
 				options = {
 					theme = "catppuccin",
+					lazy = false, -- removes flickering
+					section_separators = { left = "", right = "" },
 					globalstatus = true,
-					disabled_filetypes = { statusline = { "dashboard", "alpha", "neotree" }, winbar = {} },
+					disabled_filetypes = { statusline = { "dashboard", "neotree" }, winbar = {} },
 				},
 				sections = {
 					lualine_a = { { "mode", icon = "" } },
-					lualine_b = { { "branch", icon = "" } },
+					lualine_b = {
+						{ "branch", icon = "", separator = { right = "" } },
+						{
+							"filetype",
+							icon_only = true,
+							color = { bg = "" },
+							separator = "",
+							padding = { left = 1, right = 0 },
+						},
+						{
+							"filename",
+							symbols = { modified = " 󱇧 ", readonly = "", unnamed = "" },
+							color = { bg = "" },
+							separator = "",
+						},
+					},
 					lualine_c = {
+						{ "%=", separator = "" },
 						{
 							"diagnostics",
 							symbols = {
@@ -22,35 +40,52 @@ return {
 								hint = "󰝶 ",
 							},
 						},
-						{ "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-						{
-							"filename",
-							symbols = { modified = "  ", readonly = "", unnamed = "" },
-						},
 					},
 					lualine_x = {
 						{
 							require("lazy.status").updates,
 							cond = require("lazy.status").has_updates,
+							separator = "",
 						},
-						{ "diff" },
+						{ "diff", separator = "" },
 					},
 					lualine_y = {
+						"location",
 						{
-							"progress",
-						},
-						{
-							"location",
+							function()
+								local words = vim.fn.wordcount()["words"]
+								return "Words: " .. words
+							end,
+							cond = function()
+								local ft = vim.opt_local.filetype:get()
+								local count = {
+									latex = true,
+									tex = true,
+									text = true,
+									markdown = true,
+									vimwiki = true,
+								}
+								return count[ft] ~= nil
+							end,
 						},
 					},
 					lualine_z = {
 						function()
 							return " " .. os.date("%H:%M")
+							-- -- listen lsp-progress event and refresh lualine
+							-- vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
+							-- vim.api.nvim_create_autocmd("User", {
+							-- 	group = "lualine_augroup",
+							-- 	pattern = "LspProgressStatusUpdated",
+							-- 	callback = require("lualine").refresh,
+							-- })
+							--
+							-- return require("lsp-progress").progress()
 						end,
 					},
 				},
 
-				extensions = { "aerial", "lazy", "toggleterm", "mason", "neo-tree", "trouble" },
+				extensions = { "aerial", "lazy", "mason", "neo-tree", "trouble", "oil" },
 			}
 		end,
 	},
@@ -63,7 +98,6 @@ return {
 		},
 		opts = {
 			options = {
-				-- mode = "tabs",
 				buffer_close_icon = "󰅖",
 				separator_style = "slant",
 				numbers = "none",
