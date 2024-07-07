@@ -1,0 +1,42 @@
+theme = "ayu_mirage"
+
+[editor]
+true-color = true
+undercurl = true
+bufferline = "always"
+line-number = "relative"
+cursorline = true
+auto-save = true
+middle-click-paste = false
+popup-border = "all"
+
+[editor.cursor-shape]
+insert = "bar"
+
+[editor.statusline]
+left = ["mode", "spinner"]
+center = ["workspace-diagnostics", "file-base-name", "file-modification-indicator"]
+right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+separator = "│"
+mode.normal = "󰚄 NORMAL"
+mode.insert = "󰚄 INSERT"
+mode.select = "󰚄 SELECT"
+
+[editor.lsp]
+display-messages = true
+display-inlay-hints = true
+
+[editor.indent-guides]
+render = true
+character = "┆"
+skip-levels = 1
+
+# Keybinds
+[keys.normal]
+g = { a = "code_action" } # map 'ga' to show code actions
+
+# [keys.insert]
+
+[keys.insert.j]
+k = "normal_mode" # map `jk` to exit insert mode
+j = "normal_mode" # map `jj` to exit insert mode
