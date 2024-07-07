@@ -69,6 +69,7 @@ alias tree='tree -C'
 alias ls='eza --icons=always --color=always --no-filesize --no-time --no-user --no-permissions'
 alias ff='fastfetch'
 alias gg='lazygit'
+alias hx='helix'
 
 # Shell integrations
 eval "$(zoxide init --cmd cd zsh)"
