@@ -1,5 +1,58 @@
 return {
 	{
+		"epwalsh/obsidian.nvim",
+		version = "*",
+		lazy = true,
+		ft = "markdown",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		config = function()
+			require("obsidian").setup({
+				workspaces = {
+					{
+						name = "main",
+						path = "~/Obsidian/main",
+					},
+				},
+				completion = {
+					nvim_cmp = true,
+					min_chars = 2, -- trigger comp at 2 chars
+				},
+				wiki_link_func = "prepend_note_id",
+				note_frontmatter_func = function(note)
+					-- equivalent to default frontmatter function
+					local out = { id = note.id, aliases = note.aliases, tags = note.tags }
+
+					if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
+						for k, v in pairs(note.metadata) do
+							out[k] = v
+						end
+					end
+					return out
+				end,
+
+				templates = {
+					subdir = "_templates",
+					date_format = "%Y-%m-%d",
+					time_format = "%H:%M",
+					tags = "",
+					substutions = {
+						yesterday = function()
+							return os.date("%Y-%m-%d", os.time() - 86400)
+						end,
+						tomorrow = function()
+							return os.date("%Y-%m-%d", os.time() - 86400)
+						end,
+					},
+				},
+				ui = {
+					enable = true,
+				},
+			})
+		end,
+	},
+	{
 		"chrishrb/gx.nvim",
 		keys = { { "gx", "<cmd>Browse<cr>", mode = { "n", "x" } } },
 		cmd = { "Browse" },

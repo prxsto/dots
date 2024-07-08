@@ -35,6 +35,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	pattern = { "*.md" },
 	callback = function()
 		vim.opt_local.spell = true
+		vim.opt.textwidth = 80
 	end,
 })
 
@@ -50,8 +51,8 @@ vim.api.nvim_create_autocmd("BufEnter", {
 })
 
 --open neo-tree by default (after dashboard)
-vim.api.nvim_create_autocmd("BufReadPost", {
-	callback = function()
-		vim.cmd("Neotree show")
-	end,
-})
+-- vim.api.nvim_create_autocmd("BufReadPost", {
+-- 	callback = function()
+-- 		vim.cmd("Neotree show")
+-- 	end,
+-- })

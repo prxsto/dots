@@ -45,3 +45,5 @@ opt.swapfile = false
 
 opt.updatetime = 250
 opt.timeoutlen = 300
+
+opt.conceallevel = 2 -- fixes obidian markdown display

@@ -35,22 +35,19 @@ map("n", "<C-j>", "<C-w>j", { desc = "go to lower window" })
 map("n", "<C-k>", "<C-w>k", { desc = "go to upper window" })
 map("n", "<C-l>", "<C-w>l", { desc = "go to right window" })
 
--- TODO fix these
--- resize window using <ctrl> arrow keys
-map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "increase window height" })
-map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "decrease window height" })
-map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "decrease window width" })
-map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "increase window width" })
-
 -- lazy
 map("n", "<leader>ll", "<cmd>Lazy<cr>", { desc = "lazy" })
 
 -- buffers
-map("n", "<leader>bg", "<cmd>BufferLinePick<CR>", { desc = "go to buffer" })
+map("n", "<leader>bg", "<cmd>BufferLinePick<cr>", { desc = "go to buffer" })
 map("n", "<leader>bq", "<cmd>bd<cr>", { desc = "quit current buffer" })
+map("n", "<S-tab>", "<cmd>BufferLineCycleNext<cr>", { desc = "next buffer" })
 
 -- oil
 map("n", "-", "<CMD>Oil<CR>", { desc = "open parent directory" })
+
+-- auto-save
+map("n", "<leader>as", ":ASToggle<CR>", { desc = "toggle auto-save" })
 
 -- precognition
 map("n", "<leader>pt", function()
