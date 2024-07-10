@@ -1,4 +1,13 @@
 return {
+	-- {
+	-- 	"kevinhwang91/nvim-ufo",
+	-- 	dependencies = { "kevinhwang91/promise-async" },
+	-- },
+	-- {
+	-- 	"chrisgrieser/nvim-origami",
+	-- 	event = "BufReadPost", -- later or on keypress would prevent saving folds
+	-- 	opts = {}, -- needed even when using default config
+	-- },
 	{
 		"shortcuts/no-neck-pain.nvim",
 		version = "*",
@@ -61,7 +70,7 @@ return {
 		end,
 	},
 	{
-		"okuuva/auto-save.nvim",
+		"pocco81/auto-save.nvim",
 		cmd = "ASToggle", -- optional for lazy loading on command
 		event = { "InsertLeave", "TextChanged" }, -- optional for lazy loading on trigger events
 	},
