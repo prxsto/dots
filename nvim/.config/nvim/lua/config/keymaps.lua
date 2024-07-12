@@ -41,7 +41,9 @@ map("n", "<leader>ll", "<cmd>Lazy<cr>", { desc = "lazy" })
 -- buffers
 map("n", "<leader>bg", "<cmd>BufferLinePick<cr>", { desc = "go to buffer" })
 map("n", "<leader>bq", "<cmd>bd<cr>", { desc = "quit current buffer" })
-map("n", "<S-tab>", "<cmd>BufferLineCycleNext<cr>", { desc = "next buffer" })
+map("n", "<tab>", "<cmd>BufferLineCycleNext<cr>", { desc = "next buffer" })
+map("n", "<S-tab>", "<cmd>BufferLineCyclePrev<cr>", { desc = "prev buffer" })
+map("n", "<leader>bo", "<cmd>%bd|e#<cr>", { desc = "close all other buffers" })
 
 -- oil
 map("n", "-", "<CMD>Oil<CR>", { desc = "open parent directory" })

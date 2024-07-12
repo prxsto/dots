@@ -28,6 +28,7 @@ mode.select = "󰚄 SELECT"
 
 [editor.lsp]
 display-messages = true
+auto-signature-help = false
 # display-inlay-hints = true
 
 [editor.indent-guides]
@@ -43,10 +44,12 @@ ret = ["open_below", "normal_mode"]
 S-ret = ["open_below", "normal_mode", "move_visual_line_up"]
 "S-tab" = ":bn" # cycle buffers
 X = "extend_line_above"
+K = "hover"
 
 # [keys.normal.space]
 
-# [keys.insert]
+[keys.insert]
+C-p = "signature_help"
 
 [keys.insert.j]
 k = "normal_mode" # map `jk` to exit insert mode

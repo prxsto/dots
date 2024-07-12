@@ -73,3 +73,4 @@ alias gg='lazygit'
 
 # Shell integrations
 eval "$(zoxide init --cmd cd zsh)"
+export PATH=$HOME/.local/bin:$PATH
