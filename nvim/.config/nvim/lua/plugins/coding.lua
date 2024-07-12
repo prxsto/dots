@@ -9,6 +9,14 @@ return {
 	-- 	opts = {}, -- needed even when using default config
 	-- },
 	{
+		"kylechui/nvim-surround",
+		version = "*",
+		event = "VeryLazy",
+		config = function()
+			require("nvim-surround").setup({})
+		end,
+	},
+	{
 		"shortcuts/no-neck-pain.nvim",
 		version = "*",
 		keys = {

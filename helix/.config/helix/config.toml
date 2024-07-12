@@ -42,7 +42,8 @@ g = { a = "code_action" } # map 'ga' to show code actions
 esc = ["collapse_selection", "keep_primary_selection"]
 ret = ["open_below", "normal_mode"]
 S-ret = ["open_below", "normal_mode", "move_visual_line_up"]
-"S-tab" = ":bn" # cycle buffers
+"tab" = ":bn" 
+"S-tab" = ":bp"
 X = "extend_line_above"
 K = "hover"
 
