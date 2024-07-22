@@ -26,13 +26,13 @@ layout {
                 command_git_branch_rendermode  "static"
             }
         }
-        pane split_direction="vertical" {
-        	pane size="20%" {
-        		name " file explorer"
-        		plugin location="zellij:strider"
-        	}
-        	children
-        }
+        // pane split_direction="vertical" {
+        // 	pane size="20%" {
+        // 		name " file explorer"
+        // 		plugin location="zellij:strider"
+        // 	}
+        children
+        // }
     }	
 	tab name="env" {
 		pane split_direction="vertical" {
@@ -40,10 +40,9 @@ layout {
 				name "󰚄 helix"
 				command "hx"
 				args "."
-				size "60%"
+				size "70%"
 			}
 			pane split_direction="horizontal" {
-				size "20%"
 				pane name=" term"
 				pane {
 					command "lazygit"

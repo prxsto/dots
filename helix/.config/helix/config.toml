@@ -51,7 +51,3 @@ K = "hover"
 
 [keys.insert]
 C-p = "signature_help"
-
-[keys.insert.j]
-k = "normal_mode" # map `jk` to exit insert mode
-j = "normal_mode" # map `jj` to exit insert mode
