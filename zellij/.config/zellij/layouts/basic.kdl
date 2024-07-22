@@ -1,0 +1,56 @@
+layout {
+	default_tab_template {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        children
+        pane size=2 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+    }	
+ //    pane_template name="hx" {
+	// 	command "hx ."
+	// 	name "helix"
+	// 	// size "65%"
+	// }
+	// pane_template name="lazygit" {
+	// 	command "lazygit"
+	// 	name "lazygit"
+	// }
+	// pane_template name=""
+	// pane {
+	// 	plugin location="zellij:status-bar"
+	// }
+	// pane split_direction="vertical" {
+	// 	pane {
+	// 		command "hx"
+	// 		size "65%"
+	// 		name "helix"
+
+	// 	}
+	// 	pane split_direction="horizontal" {
+	// 		pane name="term"
+	// 		pane {
+	// 			command "lazygit"
+	// 			name "lazygit"
+	// 		}
+	// 	}
+	// }
+	tab name="env" {
+		pane split_direction="vertical" {
+			pane {
+				name "helix"
+				command "hx"
+				args "."
+				size "65%"
+			}
+			pane split_direction="horizontal" {
+				pane name="term"
+				pane {
+					command "lazygit"
+					name "lazygit"
+				}
+				}
+			}
+	}
+}
