@@ -1,56 +1,55 @@
 layout {
 	default_tab_template {
         pane size=1 borderless=true {
-            plugin location="zellij:tab-bar"
+            plugin location="file:$HOME/zellij-plugins/zjstatus.wasm" {
+            	format_left   "{mode} #[fg=#89B4FA,bold]{session}"
+                format_center "{tabs}"
+                format_right  "{command_git_branch} {datetime}"
+                format_space  ""
+
+                border_enabled  "true"
+                border_char     "─"
+                border_format   "#[fg=#6C7086]{char}"
+                border_position "top"
+
+                hide_frame_for_single_pane "true"
+
+                mode_normal  "#[bg=blue] "
+                mode_tmux    "#[bg=#ffc387] "
+
+                tab_normal   "#[fg=#6C7086] {name} "
+                tab_active   "#[fg=#9399B2,bold,italic] {name} "
+
+                command_git_branch_command     "git rev-parse --abbrev-ref HEAD"
+                command_git_branch_format      "#[fg=blue] {stdout} "
+                command_git_branch_interval    "10"
+                command_git_branch_rendermode  "static"
+            }
         }
-        children
-        pane size=2 borderless=true {
-            plugin location="zellij:status-bar"
+        pane split_direction="vertical" {
+        	pane size="20%" {
+        		name " file explorer"
+        		plugin location="zellij:strider"
+        	}
+        	children
         }
     }	
- //    pane_template name="hx" {
-	// 	command "hx ."
-	// 	name "helix"
-	// 	// size "65%"
-	// }
-	// pane_template name="lazygit" {
-	// 	command "lazygit"
-	// 	name "lazygit"
-	// }
-	// pane_template name=""
-	// pane {
-	// 	plugin location="zellij:status-bar"
-	// }
-	// pane split_direction="vertical" {
-	// 	pane {
-	// 		command "hx"
-	// 		size "65%"
-	// 		name "helix"
-
-	// 	}
-	// 	pane split_direction="horizontal" {
-	// 		pane name="term"
-	// 		pane {
-	// 			command "lazygit"
-	// 			name "lazygit"
-	// 		}
-	// 	}
-	// }
 	tab name="env" {
 		pane split_direction="vertical" {
 			pane {
-				name "helix"
+				name "󰚄 helix"
 				command "hx"
 				args "."
-				size "65%"
+				size "60%"
 			}
 			pane split_direction="horizontal" {
-				pane name="term"
+				size "20%"
+				pane name=" term"
 				pane {
 					command "lazygit"
-					name "lazygit"
-				}
+					name " lazygit"
 				}
 			}
+		}
 	}
 }

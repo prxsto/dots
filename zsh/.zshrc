@@ -69,6 +69,7 @@ alias tree='tree -C'
 alias ls='eza --icons=always --color=always --no-filesize --no-time --no-user --no-permissions'
 alias ff='fastfetch'
 alias gg='lazygit'
+alias zj='zellij'
 # alias hx='helix'
 
 # Shell integrations
@@ -76,3 +77,4 @@ eval "$(zoxide init --cmd cd zsh)"
 
 export PATH="$HOME/Go/bin:$PATH"
 export PATH=$HOME/.local/bin:$PATH
+export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
