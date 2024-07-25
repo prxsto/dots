@@ -70,7 +70,9 @@ alias ls='eza --icons=always --color=always --no-filesize --no-time --no-user --
 alias ff='fastfetch'
 alias gg='lazygit'
 alias zj='zellij'
-# alias hx='helix'
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  alias hx='helix'
+fi
 
 # Shell integrations
 eval "$(zoxide init --cmd cd zsh)"
