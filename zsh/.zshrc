@@ -77,6 +77,6 @@ fi
 # Shell integrations
 eval "$(zoxide init --cmd cd zsh)"
 
-export PATH="$HOME/Go/bin:$PATH"
-export PATH=$HOME/.local/bin:$PATH
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
+export PATH="$PATH:/usr/local/go/bin"
