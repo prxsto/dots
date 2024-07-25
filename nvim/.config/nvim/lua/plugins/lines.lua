@@ -5,7 +5,7 @@ return {
 		opts = function()
 			return {
 				options = {
-					theme = "catppuccin",
+					theme = "tokyonight",
 					lazy = false, -- removes flickering
 					section_separators = { left = "", right = "" },
 					globalstatus = true,
@@ -212,7 +212,7 @@ return {
 		"utilyre/barbecue.nvim",
 		name = "barbecue",
 		version = "*",
-		theme = "catppuccin",
+		theme = "tokyonight",
 		dependencies = {
 			"SmiteshP/nvim-navic",
 			"nvim-tree/nvim-web-devicons",
