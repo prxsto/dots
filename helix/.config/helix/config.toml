@@ -33,8 +33,7 @@ auto-signature-help = false
 
 [editor.indent-guides]
 render = true
-character = "┆"
-skip-levels = 1
+# skip-levels = 1
 
 # Keybinds
 [keys.normal]
