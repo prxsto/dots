@@ -1,13 +1,13 @@
 local function map(mode, lhs, rhs, opts)
-	-- set default value if not specify
-	if opts.noremap == nil then
-		opts.noremap = true
-	end
-	if opts.silent == nil then
-		opts.silent = true
-	end
+   -- set default value if not specify
+   if opts.noremap == nil then
+      opts.noremap = true
+   end
+   if opts.silent == nil then
+      opts.silent = true
+   end
 
-	vim.keymap.set(mode, lhs, rhs, opts)
+   vim.keymap.set(mode, lhs, rhs, opts)
 end
 
 vim.g.mapleader = " "
@@ -24,9 +24,9 @@ map({ "n", "v" }, "<Leader>y", '"+y', { desc = "copy to clipboard" })
 map("n", "<leader>nh", "<cmd>nohl<cr>", { desc = "remove highlights" })
 
 -- window management
-map("n", "<leader>sv", "<C-w>v", { desc = "split window vertically" }) -- split window vertically
-map("n", "<leader>sh", "<C-w>s", { desc = "split window horizontally" }) -- split window horizontally
-map("n", "<leader>se", "<C-w>=", { desc = "make splits equal size" }) -- make split windows equal width & height
+map("n", "<leader>sv", "<C-w>v", { desc = "split window vertically" })     -- split window vertically
+map("n", "<leader>sh", "<C-w>s", { desc = "split window horizontally" })   -- split window horizontally
+map("n", "<leader>se", "<C-w>=", { desc = "make splits equal size" })      -- make split windows equal width & height
 map("n", "<leader>sx", "<cmd>close<CR>", { desc = "close current split" }) -- close current split window
 
 -- move to window using the <ctrl> hjkl keys
@@ -49,14 +49,14 @@ map("n", "<leader>bo", "<cmd>%bd|e#<cr>", { desc = "close all other buffers" })
 map("n", "-", "<CMD>Oil<CR>", { desc = "open parent directory" })
 
 -- auto-save
-map("n", "<leader>as", ":ASToggle<CR>", { desc = "toggle auto-save" })
+-- map("n", "<leader>as", ":ASToggle<CR>", { desc = "toggle auto-save" })
 
 -- precognition
 map("n", "<leader>pt", function()
-	require("precognition").toggle()
+   require("precognition").toggle()
 end, { desc = "toggle precognition" })
 map("n", "<leader>pp", function()
-	require("precognition").peek()
+   require("precognition").peek()
 end, { desc = "precognition peek" })
 
 -- quit

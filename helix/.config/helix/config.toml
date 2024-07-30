@@ -1,11 +1,11 @@
-theme = "tokyonight"
+theme = "onedark"
 
 [editor]
 mouse = false
 true-color = true
 color-modes = true
 undercurl = true
-bufferline = "always"
+bufferline = "multiple"
 line-number = "relative"
 cursorline = true
 auto-format = true
@@ -45,8 +45,10 @@ S-ret = ["open_below", "normal_mode", "move_visual_line_up"]
 "S-tab" = ":bp"
 X = "extend_line_above"
 K = "hover"
-
-# [keys.normal.space]
+"C-h" = "jump_view_left"
+"C-j" = "jump_view_down"
+"C-k" = "jump_view_up"
+"C-l" = "jump_view_right"
 
 [keys.insert]
 C-p = "signature_help"
