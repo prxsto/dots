@@ -1,4 +1,4 @@
-theme = "onedark"
+theme = "tokyonight"
 
 [editor]
 mouse = false
@@ -19,12 +19,9 @@ insert = "bar"
 select = "underline"
 
 [editor.statusline]
-left = ["mode", "spacer", "version-control"]
-center = ["file-base-name", "file-modification-indicator"]
-right = ["workspace-diagnostics", "spinner", "position"]
-mode.normal = "NORMAL"
-mode.insert = "INSERT"
-mode.select = "SELECT"
+left = ["mode","spinner", "version-control"]
+center = ["file-name", "read-only-indicator", "file-modification-indicator"]
+right = ["workspace-diagnostics","primary-selection-length", "position", "file-encoding"]
 
 [editor.lsp]
 display-messages = true
