@@ -227,3 +227,13 @@ args = [
   "--quiet",
   "--line-length=79",
 ]
+
+[[language]]
+name = "markdown"
+scope = "source.md"
+injection-regex = "md|markdown"
+file-types = ["md", "markdown", "PULLREQ_EDITMSG"]
+soft-wrap.enable = true
+roots = [".marksman.toml"]
+language-servers = [ "marksman" ]
+indent = { tab-width = 2, unit = "  " }
