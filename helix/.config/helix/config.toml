@@ -1,4 +1,4 @@
-theme = "onedark"
+theme = "tokyonight"
 
 [editor]
 mouse = false
@@ -12,6 +12,7 @@ auto-format = true
 auto-save = true
 popup-border = "all"
 shell = ["zsh", "-c"]
+# end-of-line-diagnostics = "hint"
 
 [editor.cursor-shape]
 normal = "block"
@@ -35,6 +36,9 @@ auto-signature-help = false
 render = true
 # skip-levels = 1
 
+# [editor.inline-diagnostics]
+# cursor-line = "warning"
+
 # Keybinds
 [keys.normal]
 g = { a = "code_action" } # map 'ga' to show code actions
@@ -49,6 +53,8 @@ K = "hover"
 "C-j" = "jump_view_down"
 "C-k" = "jump_view_up"
 "C-l" = "jump_view_right"
+"C-d" = ["half_page_down", "goto_window_center"]
+"C-u" = ["half_page_up", "goto_window_center"]
 
 [keys.insert]
 C-p = "signature_help"

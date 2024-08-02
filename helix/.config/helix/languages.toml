@@ -31,8 +31,10 @@ procMacro = { enable = true }
 name = "go"
 scope = "source.go"
 roots = ["go.work", "go.mod"]
+injection-regex = "go"
 auto-format = true
 comment-token = "//"
+indent = { tab-width = 4, unit = "\t" }
 language-servers = ["gopls"]
 formatter = { command = "goimports" }
 
