@@ -52,6 +52,9 @@ K = "hover"
 "C-l" = "jump_view_right"
 "C-d" = ["half_page_down", "goto_window_center"]
 "C-u" = ["half_page_up", "goto_window_center"]
+# open lazygit in popup pane
+C-g = ":sh tmux send-keys -t 2 lazygit Enter && tmux select-pane -t 2"
+C-S-g = ":sh tmux popup -d \"#{pane_current_path}\" -xC -yC -w80% -h80% -E lazygit"
 
 [keys.insert]
 C-p = "signature_help"
