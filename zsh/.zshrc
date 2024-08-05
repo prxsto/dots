@@ -82,6 +82,9 @@ export PATH=/opt/homebrew/opt/rustup/bin:$PATH
 export PATH=/usr/local/go/bin:$PATH
 export PATH=/go/bin/goimports:$PATH
 export PATH=/Users/prxsto/opt/miniconda3/bin:$PATH
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    export HOMEBREW_NO_ENV_HINTS=TRUE
+fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
