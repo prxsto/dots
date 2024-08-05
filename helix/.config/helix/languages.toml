@@ -16,6 +16,11 @@ feature_paths = true         # enable path completion
 name = "friendly-snippets"                                  # optional name shown on snippet description
 git = "https://github.com/rafamadriz/friendly-snippets.git" # git repo with snippets collections
 
+# [language-server.gpt]
+# command = "helix-gpt"
+# # args = ["--handler","codeium","--logFile","~/tmp/helix-gpt.log"]
+# environment = { HANDLER= "codeium"}
+
 [[language]]
 name = "rust"
 
@@ -54,74 +59,38 @@ auto-format = true
 
 [[language]]
 name = "typescript"
-language-servers = [
-  "typescript-language-server",
-  "tailwindcss-react",
-  "eslint",
-  "emmet-lsp",
-  "scls",
-]
+language-servers = [  "typescript-language-server", "tailwindcss-react", "eslint", "emmet-ls", "scls", "gpt"]
 formatter = { command = 'npx', args = ["prettier", "--parser", "typescript"] }
 auto-format = true
 
 [[language]]
 name = "tsx"
-language-servers = [
-  "typescript-language-server",
-  "tailwindcss-react",
-  "eslint",
-  "emmet-lsp",
-  "scls",
-]
+language-servers = [ "typescript-language-server", "tailwindcss-react", "eslint", "emmet-ls", "scls", "gpt"]
 formatter = { command = 'npx', args = ["prettier", "--parser", "typescript"] }
 auto-format = true
 
 [[language]]
 name = "jsx"
-language-servers = [
-  "typescript-language-server",
-  "tailwindcss-react",
-  "eslint",
-  "emmet-lsp",
-  "scls",
-]
+language-servers = [ "typescript-language-server", "tailwindcss-react", "eslint", "emmet-ls","scls", "gpt"]
 grammar = "javascript"
 formatter = { command = 'npx', args = ["prettier", "--parser", "typescript"] }
 auto-format = true
 
 [[language]]
 name = "javascript"
-language-servers = [
-  "typescript-language-server",
-  "tailwindcss-react",
-  "eslint",
-  "emmet-lsp",
-  "scls",
-]
+language-servers = [ "typescript-language-server", "tailwindcss-react", "eslint", "emmet-ls", "scls", "gpt"]
 formatter = { command = 'npx', args = ["prettier", "--parser", "typescript"] }
 auto-format = true
 
 [[language]]
 name = "json"
-language-servers = ["vscode-json-language-server"]
+language-servers = [ "vscode-json-language-server" ]
 formatter = { command = 'npx', args = ["prettier", "--parser", "json"] }
 auto-format = true
-
-[language-server.sql-language-server]
-command = "sql-language-server"
-args = ["up", "--method", "stdio"]
-
-[[language]]
-name = "sql"
-language-servers = ["sql-language-server"]
 
 [[language]]
 name = "lua"
 auto-format = true
-
-[[language]]
-name = "toml"
-formatter = { command = "taplo", args = ["fmt", "-"] }
 
 [language-server.vscode-json-language-server.config]
 json = { validate = { enable = true }, format = { enable = true } }
@@ -135,24 +104,15 @@ provideFormatter = true
 
 [[language]]
 name = "html"
-roots = [".git"]
 formatter = { command = 'npx', args = ["prettier", "--parser", "html"] }
-language-servers = [
-  "vscode-html-language-server",
-  "tailwindcss-react",
-  "emmet-lsp",
-]
+language-servers = [ "vscode-html-language-server", "tailwindcss-react", "emmet-ls"]
 auto-format = true
 
 
 [[language]]
 name = "css"
 formatter = { command = 'npx', args = ["prettier", "--parser", "css"] }
-language-servers = [
-  "vscode-css-language-server",
-  "tailwindcss-react",
-  "emmet-lsp",
-]
+language-servers = [ "vscode-css-language-server", "tailwindcss-react", "emmet-ls"]
 auto-format = true
 
 [[language]]
@@ -162,13 +122,13 @@ language-servers = ["vscode-css-language-server"]
 auto-format = true
 
 
-[language-server.emmet-lsp]
-command = "emmet-language-server"
+[language-server.emmet-ls]
 args = ["--stdio"]
+command = "emmet-language-server"
 
 [language-server.eslint]
-command = "vscode-eslint-language-server"
 args = ["--stdio"]
+command = "vscode-eslint-language-server"
 
 [language-server.eslint.config]
 format = { enable = true }
@@ -179,7 +139,7 @@ run = "onType"
 validate = "on"
 codeAction = { disableRuleComment = { enable = true, location = "separateLine" }, showDocumentation = { enable = false } }
 codeActionsOnSave = { mode = "all", "source.fixAll.eslint" = true }
-experimental = {}
+experimental = { }
 problems = { shortenToSingleLine = false }
 
 [language-server.volar]
@@ -203,7 +163,7 @@ config = {}
 [language-server.astro-ls]
 command = "astro-ls"
 args = ["--stdio"]
-config = { typescript = { tsdk = "/Users/ali/Desktop/projects/taby-frontend-2023/node_modules/typescript/lib" }, environment = "node" }
+config = {typescript = {tsdk = "/Users/ali/Desktop/projects/taby-frontend-2023/node_modules/typescript/lib"}, environment = "node"}
 
 [[language]]
 name = "astro"
@@ -211,31 +171,5 @@ scope = "source.astro"
 injection-regex = "astro"
 file-types = ["astro"]
 language-servers = ["astro-ls"]
-formatter = { command = "prettier", args = [
-  "--plugin",
-  "prettier-plugin-astro",
-  "--parser",
-  "astro",
-] }
+formatter = { command = "prettier", args = ["--plugin", "prettier-plugin-astro", "--parser", "astro"] }
 auto-format = true
-
-[[language]]
-name = "python"
-auto-format = false
-[language.formatter]
-command = "black"
-args = [
-  "-",                # stdin
-  "--quiet",
-  "--line-length=79",
-]
-
-[[language]]
-name = "markdown"
-scope = "source.md"
-injection-regex = "md|markdown"
-file-types = ["md", "markdown", "PULLREQ_EDITMSG"]
-soft-wrap.enable = true
-roots = [".marksman.toml"]
-language-servers = [ "marksman" ]
-indent = { tab-width = 2, unit = "  " }

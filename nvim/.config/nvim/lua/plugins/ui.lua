@@ -1,11 +1,9 @@
 return {
 	{
-		"folke/tokyonight.nvim",
-		lazy = false,
-		priority = 1000,
-		opts = {},
+		"rose-pine/neovim",
+		name = "rose-pine",
 		init = function()
-			vim.cmd.colorscheme("tokyonight-night")
+			vim.cmd.colorscheme("rose-pine")
 		end,
 	},
 	{
