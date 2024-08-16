@@ -1,13 +1,4 @@
 return {
-   -- {
-   -- 	"kevinhwang91/nvim-ufo",
-   -- 	dependencies = { "kevinhwang91/promise-async" },
-   -- },
-   -- {
-   -- 	"chrisgrieser/nvim-origami",
-   -- 	event = "BufReadPost", -- later or on keypress would prevent saving folds
-   -- 	opts = {}, -- needed even when using default config
-   -- },
    {
       "kylechui/nvim-surround",
       version = "*",
@@ -38,13 +29,6 @@ return {
          focus_preview = true,
       },
    },
-   -- {
-   -- 	"barrett-ruth/import-cost.nvim",
-   -- 	build = "sh install.sh npm",
-   -- 	config = function()
-   -- 		require("import-cost").setup({})
-   -- 	end,
-   -- },
    {
       "windwp/nvim-autopairs",
       event = { "InsertEnter" },
@@ -77,9 +61,38 @@ return {
          cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
       end,
    },
-   -- {
-   --    "pocco81/auto-save.nvim",
-   --    cmd = "ASToggle",                         -- optional for lazy loading on command
-   --    event = { "InsertLeave", "TextChanged" }, -- optional for lazy loading on trigger events
-   -- },
+   {
+      "kawre/leetcode.nvim",
+      build = ":TSUpdate html",
+      dependencies = {
+         "nvim-telescope/telescope.nvim",
+         "nvim-lua/plenary.nvim", -- required by telescope
+         "MunifTanjim/nui.nvim",
+
+         -- optional
+         "nvim-treesitter/nvim-treesitter",
+         "rcarriga/nvim-notify",
+         "nvim-tree/nvim-web-devicons",
+      },
+      opts = {
+         -- configuration goes here
+         {
+            ---@type string
+            arg = "leetcode.nvim",
+
+            ---@type lc.lang
+            lang = "golang",
+
+            keys = {
+               toggle = { "q" }, ---@type string|string[]
+               confirm = { "<CR>" }, ---@type string|string[]
+
+               reset_testcases = "r", ---@type string
+               use_testcase = "U", ---@type string
+               focus_testcases = "H", ---@type string
+               focus_result = "L", ---@type string
+            },
+         }
+      },
+   }
 }

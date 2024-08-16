@@ -79,8 +79,10 @@ eval "$(zoxide init --cmd cd zsh)"
 
 export PATH=$HOME/.local/bin:$PATH
 export PATH=/opt/homebrew/opt/rustup/bin:$PATH
-export PATH=/usr/local/go/bin:$PATH
-export PATH=/go/bin/goimports:$PATH
+export PATH=$GOPATH/bin:$PATH
+export GOPATH=$HOME/go
+# export PATH=/usr/local/go/bin:$PATH
+# export PATH=/go/bin/goimports:$PATH
 export PATH=/Users/prxsto/opt/miniconda3/bin:$PATH
 if [[ "$OSTYPE" == "darwin"* ]]; then
     export HOMEBREW_NO_ENV_HINTS=TRUE
