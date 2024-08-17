@@ -5,16 +5,16 @@ return {
       opts = function()
          return {
             options = {
-               theme = "tokyonight",
+               theme = "rose-pine",
                lazy = false, -- removes flickering
-               section_separators = { left = "", right = "" },
+               section_separators = { left = "", right = "" },
                globalstatus = true,
                disabled_filetypes = { statusline = { "dashboard", "neotree" }, winbar = {} },
             },
             sections = {
                lualine_a = { { "mode", icon = "" } },
                lualine_b = {
-                  { "branch", icon = "", separator = { right = "" } },
+                  { "branch", icon = "", separator = { right = "" } },
                   {
                      "filetype",
                      icon_only = true,
@@ -73,7 +73,7 @@ return {
                   function()
                      return " " .. os.date("%H:%M")
                      -- -- listen lsp-progress event and refresh lualine
-                     -- vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
+
                      -- vim.api.nvim_create_autocmd("User", {
                      -- 	group = "lualine_augroup",
                      -- 	pattern = "LspProgressStatusUpdated",
@@ -120,6 +120,7 @@ return {
       config = function()
          require("ibl").setup({
             exclude = { filetypes = { "dashboard" } },
+            -- highlight = "#6e6a86"
          })
       end,
    },
@@ -127,7 +128,7 @@ return {
       "utilyre/barbecue.nvim",
       name = "barbecue",
       version = "*",
-      theme = "tokyonight",
+      theme = "rose-pine",
       dependencies = {
          "SmiteshP/nvim-navic",
          "nvim-tree/nvim-web-devicons",

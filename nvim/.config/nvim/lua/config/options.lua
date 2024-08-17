@@ -14,9 +14,9 @@ opt.softtabstop = 2
 -- use number of spaces to insert a <Tab>
 opt.expandtab = true
 
-opt.wrap = false -- disable line wrap
+opt.wrap = false              -- disable line wrap
 
--- opt.fillchars = { eob = " " } -- hide fillchars
+opt.fillchars = { eob = " " } -- hide fillchars
 
 -- search settings
 opt.ignorecase = true

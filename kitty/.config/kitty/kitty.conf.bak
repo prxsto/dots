@@ -33,10 +33,11 @@ titlebar-only yes
 # tab_bar_min_tabs 2
 # tab_title_template "{activity_symbol} {index} {tab.active_exe}"
 
+term xterm-256color
 include current-theme.conf
 
 
 # BEGIN_KITTY_THEME
-# Ayu Mirage
+# Rosé Pine
 include current-theme.conf
 # END_KITTY_THEME

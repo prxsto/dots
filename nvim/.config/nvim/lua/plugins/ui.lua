@@ -1,14 +1,15 @@
 return {
    {
-      "folke/tokyonight.nvim",
-      priority = 1000, -- make sure to load this before all the other start plugins
-      config = function()
-         require("tokyonight").setup({
-            style = "night",
-            transparent = true,
-         })
-         -- load the colorscheme here
-         vim.cmd([[colorscheme tokyonight]])
+      "rose-pine/neovim",
+      name = "rose-pine",
+      opts = {
+         variant = "main",
+         styles = {
+            transparency = true,
+         },
+      },
+      init = function()
+         vim.cmd.colorscheme("rose-pine")
       end,
    },
    {
@@ -49,38 +50,6 @@ return {
       end,
    },
    {
-      "stevearc/aerial.nvim",
-      opts = {},
-      dependencies = {
-         "nvim-treesitter/nvim-treesitter",
-         "nvim-tree/nvim-web-devicons",
-      },
-      config = function()
-         local aerial = require("aerial")
-
-         aerial.setup({
-            attach_mode = "global",
-            backends = { "lsp", "treesitter", "markdown", "man" },
-            layout = { min_width = 28 },
-            show_guides = true,
-            filter_kind = false,
-            guides = {
-               mid_item = "├ ",
-               last_item = "└ ",
-               nested_top = "│ ",
-               whitespace = "  ",
-            },
-            on_attach = function(bufnr)
-               -- Jump forwards/backwards with '{' and '}'
-               vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
-               vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
-            end,
-         })
-
-         vim.keymap.set("n", "<leader>aa", "<cmd>AerialToggle!<CR>", { desc = "toggle outline" })
-      end,
-   },
-   {
       "nvimdev/dashboard-nvim",
       event = "VimEnter",
       config = function()
@@ -109,7 +78,7 @@ return {
                   {
                      desc = "  dotfiles",
                      group = "Number",
-                     action = "Telescope dotfiles",
+                     action = "cd ~/.dotfiles | Telescope find_files",
                      key = "d",
                   },
                },
