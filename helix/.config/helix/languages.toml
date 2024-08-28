@@ -173,3 +173,14 @@ file-types = ["astro"]
 language-servers = ["astro-ls"]
 formatter = { command = "prettier", args = ["--plugin", "prettier-plugin-astro", "--parser", "astro"] }
 auto-format = true
+
+[[language]]
+name = "markdown"
+scope = "source.md"
+injection-regex = "md|markdown"
+file-types = ["md", "markdown", "PULLREQ_EDITMSG"]
+soft-wrap.enable = true
+roots = [".marksman.toml"]
+language-servers = [ "marksman" ]
+indent = { tab-width = 2, unit = "  " }
+formatter = { command = "dprint", args = ["fmt", "--stdin", "md"]}
