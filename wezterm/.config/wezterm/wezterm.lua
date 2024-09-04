@@ -23,7 +23,7 @@ config.animation_fps = 120
 config.cursor_blink_rate = 250
 
 -- Colors
-config.color_scheme = "rose-pine"
-config.force_reverse_video_cursor = true
+config.color_scheme = "Tokyo Night"
+-- config.force_reverse_video_cursor = true
 
 return config
