@@ -1,5 +1,11 @@
 return {
 	{
+		"supermaven-inc/supermaven-nvim",
+		config = function()
+			require("supermaven-nvim").setup({})
+		end,
+	},
+	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
@@ -22,6 +28,13 @@ return {
 			end, { silent = true })
 
 			local lspkind = require("lspkind")
+			lspkind.init({
+				symbol_map = {
+					Supermaven = "",
+				},
+			})
+			vim.api.nvim_set_hl(0, "CmpItemKindSupermaven", { fg = "#6CC644" })
+
 			local cmp = require("cmp")
 			require("luasnip.loaders.from_vscode").lazy_load()
 			cmp.setup({
@@ -46,6 +59,7 @@ return {
 					{ name = "luasnip" },
 					{ name = "nvim_lua" },
 					{ name = "buffer" },
+					{ name = "supermaven" },
 				}),
 				enabled = function()
 					-- disable completion in comments
