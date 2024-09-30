@@ -4,10 +4,10 @@ local config = wezterm.config_builder()
 
 -- Font
 config.font = wezterm.font_with_fallback({
-   {
-      family = "Berkeley Mono",
-   },
-   "San Francisco Mono",
+	{
+		family = "Berkeley Mono",
+	},
+	"San Francisco Mono",
 })
 config.font_size = 18
 
@@ -23,7 +23,7 @@ config.animation_fps = 120
 config.cursor_blink_rate = 250
 
 -- Colors
-config.color_scheme = "Tokyo Night"
+config.color_scheme = "rose-pine"
 -- config.force_reverse_video_cursor = true
 
 return config
