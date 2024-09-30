@@ -47,7 +47,7 @@ return {
 					},
 				},
 				ui = {
-					enable = true,
+					enable = false,
 				},
 			})
 		end,
@@ -108,6 +108,25 @@ return {
 		"max397574/better-escape.nvim",
 		config = function()
 			require("better_escape").setup()
+		end,
+	},
+	{
+		"OXY2DEV/helpview.nvim",
+		lazy = false,
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+		},
+	},
+	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		opts = {},
+		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("render-markdown").setup({
+				bullet = {
+					icons = { "", "", "", "" },
+				},
+			})
 		end,
 	},
 }

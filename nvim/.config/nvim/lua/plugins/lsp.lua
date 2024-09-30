@@ -34,7 +34,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 local languages = {
 	"lua_ls",
 	"gopls",
-	"tsserver",
+	"ts_ls",
 	"cssls",
 	"tailwindcss",
 	"jsonls",
