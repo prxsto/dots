@@ -1,15 +1,12 @@
 return {
 	{
-		"rose-pine/neovim",
-		name = "rose-pine",
+		"shatur/neovim-ayu",
+		name = "ayu",
 		opts = {
-			variant = "main",
-			styles = {
-				transparency = true,
-			},
+			mirage = false,
 		},
 		init = function()
-			vim.cmd.colorscheme("rose-pine")
+			vim.cmd.colorscheme("ayu")
 		end,
 	},
 	{

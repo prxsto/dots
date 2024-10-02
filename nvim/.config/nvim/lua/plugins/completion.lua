@@ -33,7 +33,7 @@ return {
 					Supermaven = "",
 				},
 			})
-			vim.api.nvim_set_hl(0, "CmpItemKindSupermaven", { fg = "#6CC644" })
+			vim.api.nvim_set_hl(0, "CmpItemKindSupermaven", { fg = "#eb6f92" })
 
 			local cmp = require("cmp")
 			require("luasnip.loaders.from_vscode").lazy_load()
