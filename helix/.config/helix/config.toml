@@ -1,7 +1,7 @@
-theme = "rosepine"
+theme = "ayu_mirage"
 
 [editor]
-mouse = false
+mouse = true
 true-color = true
 color-modes = true
 undercurl = true
