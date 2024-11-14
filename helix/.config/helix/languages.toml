@@ -41,7 +41,7 @@ auto-format = true
 comment-token = "//"
 indent = { tab-width = 4, unit = "\t" }
 language-servers = ["gopls"]
-formatter = { command = "goimports" }
+formatter = { command = "goimports -format-only" }
 
 [language-server.gopls]
 command = "gopls"
