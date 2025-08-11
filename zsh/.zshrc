@@ -67,6 +67,7 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 # Aliases
 alias v='nvim'
+alias vi='nvim'
 alias c='clear'
 alias tree='tree -C'
 alias ls='eza --icons=always --color=always --no-filesize --no-time --no-user --no-permissions'
