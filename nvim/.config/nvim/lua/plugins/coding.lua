@@ -61,38 +61,4 @@ return {
          cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
       end,
    },
-   {
-      "kawre/leetcode.nvim",
-      build = ":TSUpdate html",
-      dependencies = {
-         "nvim-telescope/telescope.nvim",
-         "nvim-lua/plenary.nvim", -- required by telescope
-         "MunifTanjim/nui.nvim",
-
-         -- optional
-         "nvim-treesitter/nvim-treesitter",
-         "rcarriga/nvim-notify",
-         "nvim-tree/nvim-web-devicons",
-      },
-      opts = {
-         -- configuration goes here
-         {
-            ---@type string
-            arg = "leetcode.nvim",
-
-            ---@type lc.lang
-            lang = "golang",
-
-            keys = {
-               toggle = { "q" }, ---@type string|string[]
-               confirm = { "<CR>" }, ---@type string|string[]
-
-               reset_testcases = "r", ---@type string
-               use_testcase = "U", ---@type string
-               focus_testcases = "H", ---@type string
-               focus_result = "L", ---@type string
-            },
-         }
-      },
-   }
 }

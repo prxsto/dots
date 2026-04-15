@@ -1,46 +1,46 @@
-theme = TokyoNight
+# Theme: Ayu Shift (homebrew)
+# ---
+background = #0b0e14
+foreground = #bfbdb6
+selection-background = #1b3a5b
+selection-foreground = #bfbdb6
+cursor-color = #bfbdb6
+cursor-text = #0b0e14
+palette = 0=#1e232b
+palette = 1=#ea6c73
+palette = 2=#7fd962
+palette = 3=#f9af4f
+palette = 4=#53bdfa
+palette = 5=#cda1fa
+palette = 6=#90e1c6
+palette = 7=#c7c7c7
+palette = 8=#686868
+palette = 9=#f07178
+palette = 10=#aad94c
+palette = 11=#ffb454
+palette = 12=#59c2ff
+palette = 13=#d2a6ff
+palette = 14=#95e6cb
+palette = 15=#ffffff
+
+# Font
+# ---
 font-family = Berkeley Mono
+font-size = 18
 
-# This is the configuration file for Ghostty.
-#
-# This template file has been automatically created at the following
-# path since Ghostty couldn't find any existing config files on your system:
-#
-#   /Users/prxsto/Library/Application Support/com.mitchellh.ghostty/config
-#
-# The template does not set any default options, since Ghostty ships
-# with sensible defaults for all options. Users should only need to set
-# options that they want to change from the default.
-#
-# Run `ghostty +show-config --default --docs` to view a list of
-# all available config options and their default values.
-#
-# Additionally, each config option is also explained in detail
-# on Ghostty's website, at https://ghostty.org/docs/config.
+# Window
+# ---
+background-opacity = 0.9
+background-blur = macos-glass-clear
+window-padding-x = 8
+window-padding-y = 4
+window-padding-balance = true
+window-vsync = true
+# window-decoration = false
+macos-titlebar-proxy-icon = hidden
+macos-titlebar-style = hidden
 
-# Config syntax crash course
-# ==========================
-# # The config file consists of simple key-value pairs,
-# # separated by equals signs.
-# font-family = Iosevka
-# window-padding-x = 2
-#
-# # Spacing around the equals sign does not matter.
-# # All of these are identical:
-# key=value
-# key= value
-# key =value
-# key = value
-#
-# # Any line beginning with a # is a comment. It's not possible to put
-# # a comment after a config option, since it would be interpreted as a
-# # part of the value. For example, this will have a value of "#123abc":
-# background = #123abc
-#
-# # Empty values are used to reset config keys to default.
-# key =
-#
-# # Some config options have unique syntaxes for their value,
-# # which is explained in the docs for that config option.
-# # Just for example:
-# resize-overlay-duration = 4s 200ms
+# Misc
+scrollbar = never
+link-previews = true
+title = " "

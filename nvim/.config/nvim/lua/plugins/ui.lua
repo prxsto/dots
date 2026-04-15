@@ -3,7 +3,18 @@ return {
       "shatur/neovim-ayu",
       name = "ayu",
       opts = {
-         mirage = true,
+         mirage = false,
+         overrides = {
+            Normal = { bg = "None" },
+            NormalFloat = { bg = "none" },
+            ColorColumn = { bg = "None" },
+            SignColumn = { bg = "None" },
+            Folded = { bg = "None" },
+            FoldColumn = { bg = "None" },
+            CursorLine = { bg = "None" },
+            CursorColumn = { bg = "None" },
+            VertSplit = { bg = "None" },
+         },
       },
       init = function()
          vim.cmd.colorscheme("ayu")
@@ -37,7 +48,7 @@ return {
             ["<leader>d"] = { name = "+dashboard" },          -- Dashboard
             ["<leader>g"] = { name = "+goto" },               -- Go to
             ["<leader>r"] = { name = "+rename" },             -- Rename
-            ["<leader>p"] = { name = "+precog" },             --Precognition
+            ["<leader>p"] = { name = "+precog" },             -- Precognition
          },
       },
       config = function(_, opts)
