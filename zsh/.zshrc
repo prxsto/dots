@@ -81,6 +81,7 @@ fi
 # Shell integrations
 eval "$(zoxide init --cmd cd zsh)"
 
+export EDITOR="hx"
 export PATH=$HOME/.local/bin:$PATH
 export PATH=/opt/homebrew/opt/rustup/bin:$PATH
 export PATH=$GOPATH/bin:$PATH
