@@ -22,7 +22,7 @@ select = "underline"
 [editor.statusline]
 left = ["mode","spinner", "version-control"]
 center = ["file-name", "read-only-indicator", "file-modification-indicator"]
-right = ["workspace-diagnostics","position-percentage", "position", "file-encoding"]
+right = ["diagnostics","position-percentage", "position", "file-encoding"]
 
 [editor.lsp]
 display-messages = true
