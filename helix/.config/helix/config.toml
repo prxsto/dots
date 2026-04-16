@@ -27,14 +27,14 @@ right = ["diagnostics","position-percentage", "position", "file-encoding"]
 [editor.lsp]
 display-messages = true
 auto-signature-help = false
-# display-inlay-hints = true
+display-inlay-hints = true
 
 [editor.indent-guides]
 render = true
 # skip-levels = 1
 
 # [editor.inline-diagnostics]
-# cursor-line = "warning"
+cursor-line = "warning"
 
 # Keybinds
 [keys.normal]
