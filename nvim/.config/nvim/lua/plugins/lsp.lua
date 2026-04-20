@@ -65,7 +65,8 @@ return {
       dependencies = { "hrsh7th/cmp-nvim-lsp" },
       config = function()
          local capabilities = require("cmp_nvim_lsp").default_capabilities()
-         require("lspconfig").lua_ls.setup({
+
+         vim.lsp.config.lua_ls = {
             capabilities = capabilities,
             handlers = handlers,
             settings = {
@@ -84,19 +85,19 @@ return {
                   },
                },
             },
-         })
+         }
 
-         require("lspconfig").tailwindcss.setup({
-            on_attach = function()
-               require("tailwindcss-colors").buf_attach(0)
+         vim.lsp.config.tailwindcss = {
+            on_attach = function(client, bufnr)
+               require("tailwindcss-colors").buf_attach(bufnr)
             end,
-         })
+         }
 
          for _, language in pairs(languages) do
-            require("lspconfig")[language].setup({
+            vim.lsp.config[language] = {
                capabilities = capabilities,
                handlers = handlers,
-            })
+            }
          end
 
          vim.keymap.set(
@@ -104,12 +105,7 @@ return {
             "<Leader>fa",
             ":EslintFixAll<CR>",
             { desc = "fix all (ESlint)", noremap = true, silent = true }
-         )
-
-         vim.lsp.handlers["textDocument/publishDiagnostics"] =
-             vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-                virtual_text = false,
-             })
+)
 
          local symbols = { Error = "", Warn = "", Info = "", Hint = "󰝶" }
          for name, icon in pairs(symbols) do
