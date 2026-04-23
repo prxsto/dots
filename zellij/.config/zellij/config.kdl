@@ -3,7 +3,7 @@ simplified_ui false
 pane_frames true
 default_layout "dev"
 scrollback_editor "/opt/homebrew/bin/hx"
-visual_bell "true"
+visual_bell true
 theme "ayu-dark"
 
 ui {
