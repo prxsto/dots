@@ -1,3 +1,7 @@
 # dots
-my personal arch linux and macos dotfiles- feel free to pull anything useful out of these! :) <br/>
-my dev environment currently consists of kitty + tmux + helix, but i sometimes revert back to being a neovim user.
+my personal arch linux and darwin dotfiles- feel free to pull anything useful out of these! :) <br/>
+
+- shell -> zsh 
+- terminal -> ghostty
+- editor -> neovim
+- multiplexer -> zellij
