@@ -85,6 +85,7 @@ export EDITOR="hx"
 export PATH=$HOME/.local/bin:$PATH
 export PATH=/opt/homebrew/opt/rustup/bin:$PATH
 export PATH=$GOPATH/bin:$PATH
+export PATH="$HOME/.cargo/bin:$PATH"
 export GOPATH=$HOME/go
 # export PATH=/usr/local/go/bin:$PATH
 # export PATH=/go/bin/goimports:$PATH
