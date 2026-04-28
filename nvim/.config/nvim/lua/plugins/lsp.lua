@@ -48,6 +48,8 @@ local languages = {
    "jsonls",
    "eslint",
    "html",
+   "pyright",
+   "ruff",
    "emmet_language_server",
    -- "hyprls",
 }
@@ -93,6 +95,18 @@ return {
             end,
          }
 
+         vim.lsp.config.pyright = {
+            settings = {
+               python = {
+                  analysis = {
+                     extrapaths = {
+                        "/home/prxsto/dev/gis-revit/venv/lib/python3.11/site-packages"
+                     }
+                  }
+               }
+            }
+         }
+
          for _, language in pairs(languages) do
             vim.lsp.config[language] = {
                capabilities = capabilities,
@@ -105,7 +119,7 @@ return {
             "<Leader>fa",
             ":EslintFixAll<CR>",
             { desc = "fix all (ESlint)", noremap = true, silent = true }
-)
+         )
 
          local symbols = { Error = "", Warn = "", Info = "", Hint = "󰝶" }
          for name, icon in pairs(symbols) do
