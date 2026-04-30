@@ -9,12 +9,13 @@ return {
       },
       config = function()
          require("obsidian").setup({
-            workspaces = {
-               {
-                  name = "main",
-                  path = "~/obsidian/main",
-               },
-            },
+            workspaces = (function()
+               if vim.fn.has("wsl") == 1 then
+                  return { { name = "main", path = "~/dev/obsidian/" } }
+               else
+                  return { { name = "main", path = "~/obsidian/main" } }
+               end
+            end)(),
             completion = {
                nvim_cmp = true,
                min_chars = 2, -- trigger comp at 2 chars
@@ -37,12 +38,12 @@ return {
                date_format = "%Y-%m-%d",
                time_format = "%H:%M",
                tags = "",
-               substutions = {
+               substitutions = {
                   yesterday = function()
                      return os.date("%Y-%m-%d", os.time() - 86400)
                   end,
                   tomorrow = function()
-                     return os.date("%Y-%m-%d", os.time() - 86400)
+                     return os.date("%Y-%m-%d", os.time() + 86400)
                   end,
                },
             },
@@ -57,11 +58,25 @@ return {
       keys = { { "gx", "<cmd>Browse<cr>", mode = { "n", "x" } } },
       cmd = { "Browse" },
       init = function()
-         vim.g.netrw_nogx = 1 -- disable netrw gx
+         vim.g.netrw_nogx = 1
       end,
       dependencies = { "nvim-lua/plenary.nvim" },
-      config = true, -- default settings
       submodules = false,
+      config = function()
+         local function get_opener()
+            if vim.fn.has("wsl") == 1 then
+               return "wslview"
+            elseif vim.fn.has("macunix") == 1 then
+               return "open"
+            else
+               return "xdg-open"
+            end
+         end
+
+         require("gx").setup({
+            open_browser_app = get_opener(),
+         })
+      end,
    },
    {
       "stevearc/oil.nvim",
@@ -70,6 +85,9 @@ return {
       config = function()
          require("oil").setup({
             default_file_explorer = true,
+            view_options = {
+               show_hidden = true,
+            },
          })
       end,
    },
@@ -116,9 +134,45 @@ return {
       opts = {},
       dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
       config = function()
+         local function blend(hl_group, field)
+            return vim.api.nvim_get_hl(0, { name = hl_group, link = false })[field]
+         end
+
+         -- derive tints from existing highlight groups
+         local h1_bg = blend("@markup.heading.1.markdown", "fg")
+         local h2_bg = blend("@markup.heading.2.markdown", "fg")
+         local h3_bg = blend("@markup.heading.3.markdown", "fg")
+
+         local function tint(color, alpha)
+            if not color then return nil end
+            local r = math.floor((color / 0x10000) % 0x100)
+            local g = math.floor((color / 0x100) % 0x100)
+            local b = math.floor(color % 0x100)
+            local bg = blend("Normal", "bg") or 0x0d0e0f
+            local br = math.floor((bg / 0x10000) % 0x100)
+            local bg_ = math.floor((bg / 0x100) % 0x100)
+            local bb = math.floor(bg % 0x100)
+            return math.floor(br + (r - br) * alpha) * 0x10000
+                + math.floor(bg_ + (g - bg_) * alpha) * 0x100
+                + math.floor(bb + (b - bb) * alpha)
+         end
+
+         vim.api.nvim_set_hl(0, "RenderMarkdownH1Bg", { bg = tint(h1_bg, 0.19), bold = true })
+         vim.api.nvim_set_hl(0, "RenderMarkdownH2Bg", { bg = tint(h2_bg, 0.12) })
+         vim.api.nvim_set_hl(0, "RenderMarkdownH3Bg", { bg = tint(h3_bg, 0.07) })
+
          require("render-markdown").setup({
             bullet = {
-               icons = { "", "", "", "" },
+               icons = { "●", "◉", "◦", "·" },
+            },
+            heading = {
+               icons = { " ", " ", " ", " ", " ", " " },
+               backgrounds = {
+                  "RenderMarkdownH1Bg",
+                  "RenderMarkdownH2Bg",
+                  "RenderMarkdownH3Bg",
+                  "", "", "",
+               },
             },
          })
       end,
