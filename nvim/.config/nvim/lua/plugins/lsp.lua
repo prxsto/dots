@@ -19,12 +19,18 @@ local handlers = {
       }))
    end,
 }
+
+vim.lsp.handlers["textDocument/hover"] = handlers["textDocument/hover"]
+vim.lsp.handlers["textDocument/signatureHelp"] = handlers["textDocument/signatureHelp"]
+
 vim.api.nvim_create_autocmd("LspAttach", {
    group = vim.api.nvim_create_augroup("UserLspConfig", {}),
    callback = function(ev)
       vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-      vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = ev.buf, desc = "show doc info" })
+      vim.keymap.set("n", "K", function()
+         vim.lsp.buf.hover({ border = "rounded" })
+      end, { buffer = ev.buf, desc = "show doc info" })
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = ev.buf, desc = "go to definition" })
       vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = ev.buf, desc = "go to declaration" })
       --FIX: vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = ev.buf, desc = "go to implementation" })
@@ -49,6 +55,7 @@ local languages = {
    "eslint",
    "html",
    "pyright",
+   "rust_analyzer",
    "ruff",
    "emmet_language_server",
    -- "hyprls",

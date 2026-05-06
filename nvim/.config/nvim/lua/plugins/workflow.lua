@@ -128,14 +128,11 @@ return {
    {
       "OXY2DEV/helpview.nvim",
       lazy = false,
-      dependencies = {
-         "nvim-treesitter/nvim-treesitter",
-      },
    },
    {
       "MeanderingProgrammer/render-markdown.nvim",
       opts = {},
-      dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+      dependencies = { "nvim-tree/nvim-web-devicons" },
       config = function()
          local function blend(hl_group, field)
             return vim.api.nvim_get_hl(0, { name = hl_group, link = false })[field]
@@ -177,6 +174,11 @@ return {
                   "", "", "",
                },
             },
+            -- overrides = {
+            --   buftype = {
+            --      nofile = { enabled = false },
+            --   },
+            --},
          })
       end,
    },
